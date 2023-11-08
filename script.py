@@ -6,8 +6,12 @@ import time
 # s = serial.Serial('COM5')
 s = serial.Serial('/dev/cu.usbmodem91431001')
 
-playsound("basic-sine-riser-71661.mp3")
+s.write(1)
+
+#playsound("basic-sine-riser-71661.mp3")
 #on mac, I did 5 clicks down from max
+
+playsound("injected_sounds/start.mp3")
 
 wind_speed_values = [1,
 515,
@@ -23,11 +27,18 @@ wind_speed_values = [1,
 # 3790,
 # 4097]
 
-s.write(1)
-
 #operating amperage: 0.033 A
 print("first experiment: please have fans unplugged")
-print("SET COMPUTER VOLUME TO 66")
+print("make sure volume is at 75%")
+time.sleep(15)
+playsound("injected_sounds/pink-noise.mp3")
+
+s.write(1)
+
+playsound("injected_sounds/complete.mp3")
+print("PLUG IN FANS")
+time.sleep(30)
+
 print(" waiting for 90s")
 time.sleep(90)
 print(" playing bee sound")
@@ -54,13 +65,13 @@ for i in range(len(wind_speed_values)):
     print(" 30s capture")
     time.sleep(TEST_TIME)
     print(" playing bee sound")
-    playsound("bee-flying-loop-42287.mp3")
+    playsound("injected_sounds/bee-flying-loop-42287.mp3")
     print(" playing sine sweep")
-    playsound("basic-sine-riser-71661.mp3")
+    playsound("injected_sounds/basic-sine-riser-71661.mp3")
     # s.write(0)
     time.sleep(10)
 
 print("TEST DONE")
-playsound("complete.wav")
-playsound("complete.wav")
+playsound("injected_sounds/complete.wav")
+playsound("injected_sounds/complete.wav")
 s.write(1)
